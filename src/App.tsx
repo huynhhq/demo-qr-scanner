@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// Styles
+import "./App.css";
+
+// React
+import { useState } from "react";
+
+// Components
+import QrReader from "./components/QrReader";
 
 function App() {
+  const [openQr, setOpenQr] = useState<boolean>(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={() => setOpenQr(!openQr)}>
+        {openQr ? "Close" : "Open"} QR Scanner
+      </button>
+      {openQr && <QrReader />}
     </div>
   );
 }
